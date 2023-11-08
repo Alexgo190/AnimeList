@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Input from "./Input"
+import UserActionButton from "./UserActionButton"
 
 const Navbar = () => {
   return (
@@ -9,6 +10,7 @@ const Navbar = () => {
           ANIMELIST
         </Link>
         <Input />
+        <UserActionButton />
       </div>
     </header>
   )

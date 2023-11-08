@@ -1,6 +1,6 @@
-import Animelist from "@/components/Animelist"
-import Header from "@/components/Animelist/Header"
-import { getAnimeResponse, getNestedAnimeResponse, render } from "../api/api"
+import Animelist from "../components/Animelist"
+import Header from "../components/Animelist/Header"
+import { getAnimeResponse, getNestedAnimeResponse, render } from "../libs/api"
 
 // function shuffleAnime(anime) {
 //   for (let i = anime.length - 1; i > 0; i--) {
