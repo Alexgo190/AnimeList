@@ -58,7 +58,9 @@ const Page = async ({ params: { id } }) => {
         <p className="text-justify text-xl">{anime.data.synopsis}</p>
       </div>
       <div className="p-4">
-        <h3 className="text-color-primary text-2xl mb-2">Komentar Penonton</h3>
+        <h3 className="text-color-primary text-4xl mb-2 mt-4 font-bold">
+          Komentar Penonton
+        </h3>
         <CommentBox anime_mal_id={id} />
         {user && (
           <InputComment

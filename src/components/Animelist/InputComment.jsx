@@ -5,6 +5,7 @@ import React, { useState } from "react"
 const InputComment = ({ anime_mal_id, user_email, username, anime_title }) => {
   const [comment, setComment] = useState("")
   const [isCreated, setIsCreated] = useState(false)
+  const [error, setError] = useState("")
 
   const router = useRouter()
 
@@ -14,6 +15,15 @@ const InputComment = ({ anime_mal_id, user_email, username, anime_title }) => {
 
   const handleComment = async (e) => {
     e.preventDefault()
+
+    const charCount = comment.split(/\s+/).join("").length
+    console.log(charCount)
+
+    if (charCount < 5) {
+      setError("Komentar harus lebih dari 5 huruf")
+      return
+    }
+
     const data = { anime_mal_id, user_email, comment, username, anime_title }
     const response = await fetch("/api/v1/comment", {
       method: "POST",
@@ -23,6 +33,7 @@ const InputComment = ({ anime_mal_id, user_email, username, anime_title }) => {
     if (postComment.isCreated) {
       setIsCreated(true)
       setComment("")
+      setError("")
       router.refresh()
     }
     return
@@ -30,6 +41,7 @@ const InputComment = ({ anime_mal_id, user_email, username, anime_title }) => {
   return (
     <div className="flex flex-col gap-2">
       {isCreated && <p className="text-color-primary">Komentar berhasil</p>}
+      {error && <p className="text-color-red font-bold text-xl">{error}</p>}
       <textarea
         onChange={handleInput}
         value={comment}
